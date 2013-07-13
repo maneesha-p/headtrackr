@@ -1,0 +1,8 @@
+.slideImage
+{
+	display:none;
+}
+.shownImage
+{
+	display:block !important;
+}
