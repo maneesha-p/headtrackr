@@ -20,7 +20,7 @@
 				<!-- Script for head detection-->
 				<script type="text/javascript">
 						var _threshHoldVal = 5;
-						var _checkInterval = 600;
+						var _checkInterval = 1000;
 						var _videoInput = document.getElementById('inputVideo');
 						var _canvasInput = document.getElementById('inputCanvas');
 
@@ -42,11 +42,11 @@
 							document.getElementById("updateCameraVals").innerHTML = "X : " +
 														_xPos + ",<br/> Y : " +
 														_yPos + ",<br/>Z :" + _zPos;
-
+								
 							if(_blFirstRun)
 							{
 								_blFirstRun = false;
-								//detectFaceMove();
+								detectFaceMove();
 							}
 						}
 
@@ -68,7 +68,7 @@
 							{
 								slideImage(false);
 							}
-							setInterval(function()
+							setTimeout(function()
 							{
 								detectFaceMove();
 							},_checkInterval);
@@ -89,7 +89,7 @@
 
 							}
 							else{
-								elementToShow = $(imageToHide).removeClass("shownImage").last();
+								elementToShow = $(imageToHide).removeClass("shownImage").prev();
 								if(elementToShow.length == 0){
 									elementToShow = $(imagesToSlide).last();
 								}
