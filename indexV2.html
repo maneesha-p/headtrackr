@@ -1,4 +1,38 @@
-<html>
+	<html>
+		<head>
+			<title>Sample Page</title>
+			<script src="./Scripts/headtrackr-min.js" type="text/javascript"></script>			
+			<script src="./Scripts/jquey-min-2.03.js" type="text/javascript"></script>
+			<script src="./Scripts/jQuery UI 1.10/ui/jquery-ui.js" type="text/javascript"></script>
+			<link type="text/css" rel="stylesheet" href="./Styles/styles.css"/>
+		</head>
+		<body>
+				<canvas id="inputCanvas" width="320" height="240" style="display:none"></canvas>
+				<video id="inputVideo" autoplay loop style="display:none"></video>
+				<div id="updateCameraVals"></div>
+				<div id="divSlideshow">
+					<img src="./Images/1st.jpg" class="slideImage" alt="Flickr Photo 1"/>
+					<img src="./Images/2nd.jpg" class="slideImage" alt="Flickr Photo 2"/>
+					<img src="./Images/3rd.jpg" class="slideImage" alt="Flickr Photo 2"/>
+					<img src="./Images/4th.jpg" class="slideImage" alt="Flickr Photo 2"/>
+				</div>
+
+				<!-- Script for head detection-->
+				<script type="text/javascript">
+						var _threshHoldVal = 5;
+						var _checkInterval = 600;
+						var _videoInput = document.getElementById('inputVideo');
+						var _canvasInput = document.getElementById('inputCanvas');
+
+						var _xPos;
+						var _zPos;
+						var _yPos;
+						var _blFirstRun = true;
+
+
+						var _htracker = new headtrackr.Tracker({detectionInterval : 20});
+						_htracker.init(_videoInput, _canvasInput);
+						_htracker.start();
 
 						function checkImgPos( event ) {
 							_xPos = event.x;
