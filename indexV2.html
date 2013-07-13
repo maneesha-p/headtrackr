@@ -33,9 +33,24 @@
 						var facetrackrObject = new Object();
 
 						debugger;
-						var hp = new headtrackr.headposition.Tracker(facetrackrObject, 640, 480);
- 						var currentPosition = hp.track(facetrackrObject);
-						_htracker.start();
+			//			var hp = new headtrackr.headposition.Tracker(facetrackrObject, 640, 480);
+ 			//			var currentPosition = hp.track(facetrackrObject);
+			//			_htracker.start();
+				//		var face_detect = require('face_detect'),
+    				//		Canvas = require('canvas');
+
+// ... initialize a canvas object ...
+
+						var result = face_detect.detect_objects({ "canvas" : _canvasInput,
+  							"interval" : 5,
+  							"min_neighbors" : 1 });
+
+						console.log('Found ' + result.length  + ' faces.');
+
+						for (var i = 0; i < result.length; i++){
+  							var face =  result[i];
+  							console.log(face);
+						}
 
 						function checkImgPos( event ) {
 							_xPos = event.x;
